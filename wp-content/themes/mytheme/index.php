@@ -4,11 +4,18 @@
        	<a href="#" class="btnPrev"><img src="<?php echo get_template_directory_uri() ?>/images/button-1.png" alt=""></a><a href="#" class="btnNext"><img src="<?php echo get_template_directory_uri() ?>/images/button-2.png" alt=""></a>
     	<div id="carousel">
             <ul id="myRoundabout">
-              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide1.jpg" alt="" /></li>
+              <!-- <li><img src="<?php echo get_template_directory_uri() ?>/images/slide1.jpg" alt="" /></li>
               <li><img src="<?php echo get_template_directory_uri() ?>/images/slide3.jpg" alt="" /></li>
               <li><img src="<?php echo get_template_directory_uri() ?>/images/slide4.jpg" alt="" /></li>
               <li><img src="<?php echo get_template_directory_uri() ?>/images/slide5.jpg" alt="" /></li>
-              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide2.jpg" alt="" /></li>
+              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide2.jpg" alt="" /></li> -->
+							<?php $query = new WP_Query('cat=5'); ?>
+							<?php if ( $query->have_posts() ) : ?>
+							 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+								 	<li><?php the_post_thumbnail(); ?></li>
+									<?php endwhile; ?>
+									<?php else: ?>
+						 	 <?php endif; ?>
             </ul>
           </div>
     </div>

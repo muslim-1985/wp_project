@@ -106,7 +106,7 @@ header h1 a:hover{text-decoration:none  }
 .sf-menu li{ margin:0; display:inline; position:relative; float:left}
 .sf-menu li a{color:#1a1a1a; text-decoration:none; display:block; float:left; line-height:72px; font-size:12px; text-transform:uppercase; width:145px; text-align:center; background:#e7e7e7}
 .sf-menu li a:hover {color:#1a1a1a;  text-decoration:none; background:#ffffff }
-.sf-menu li a.current{ color:#fff; text-decoration:none; background:url(images/bg_menu.gif)}
+.sf-menu li.current-menu-item a{ color:#fff; text-decoration:none; background:url(images/bg_menu.gif)}
 
 .sf-menu ul { position:absolute; top:-999em; width:10em; line-height:1.0; }
 .sf-menu li:hover ul, .sf-menu li.sfHover ul { left:0; top:72px; z-index:99;}

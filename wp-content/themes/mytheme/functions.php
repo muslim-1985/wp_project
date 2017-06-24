@@ -1,4 +1,17 @@
 <?php
+add_action('after_setup_theme', 'mytheme_setup');
+function mytheme_setup() {
+  add_theme_support('title-tag');
+  add_theme_support( 'post-thumbnails' );
+  add_theme_support('post-formats', array(
+    'aside',
+    'image',
+    'video',
+    'gallery'
+  ));
+  register_nav_menu('primary', 'главное меню');
+}
+
 add_action('wp_enqueue_scripts', 'mytheme_scripts');
 function mytheme_scripts() {
   wp_enqueue_style('style-css', get_stylesheet_uri());

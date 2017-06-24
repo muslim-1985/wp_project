@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title></title>
   <meta charset="utf-8">
   <!--[if lt IE 7]><script type="text/javascript" src="http://info.template-help.com/files/ie6_warning/ie6_script_other.js"></script><![endif]-->
   <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js"></script><![endif]-->
@@ -17,23 +16,13 @@
          </form>
             <div class="inside">
                 <nav>
-                    <ul class="sf-menu">
-                        <li><a href="index.html" class="current">home</a></li>
-                        <li><a href="index-1.html">company</a>
-                            <ul>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">history</a></li>
-                                <li><a href="#">clients</a></li>
-                                <li><a href="#">news</a></li>
-                                <li><a href="#">work team</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="index-2.html">services</a></li>
-                        <li><a href="index-3.html">products</a></li>
-                        <li><a href="index-4.html">projects</a></li>
-                        <li><a href="index-5.html">support</a></li>
-                        <li><a href="index-6.html">contacts</a></li>
-                    </ul>
+                    <?php wp_nav_menu(array(
+                      'theme_location' => 'primary',
+                      'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                      'container' => 'false',
+                      'menu_class' => 'sf-menu',
+                      'depth' => '2'
+                    )); ?>
                 </nav>
             </div>
         </div>
