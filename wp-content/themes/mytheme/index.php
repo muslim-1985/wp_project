@@ -4,11 +4,6 @@
        	<a href="#" class="btnPrev"><img src="<?php echo get_template_directory_uri() ?>/images/button-1.png" alt=""></a><a href="#" class="btnNext"><img src="<?php echo get_template_directory_uri() ?>/images/button-2.png" alt=""></a>
     	<div id="carousel">
             <ul id="myRoundabout">
-              <!-- <li><img src="<?php echo get_template_directory_uri() ?>/images/slide1.jpg" alt="" /></li>
-              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide3.jpg" alt="" /></li>
-              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide4.jpg" alt="" /></li>
-              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide5.jpg" alt="" /></li>
-              <li><img src="<?php echo get_template_directory_uri() ?>/images/slide2.jpg" alt="" /></li> -->
 							<?php $query = new WP_Query('cat=5'); ?>
 							<?php if ( $query->have_posts() ) : ?>
 							 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
@@ -28,31 +23,29 @@
                     <div class="container_16">
                         <div class="tail">
                             <div class="container">
+															<?php $new_query = new WP_Query('cat=6') ?>
+															<?php if($new_query->have_posts()): ?>
+																<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
                                 <div class="grid_4 alpha">
-                                    <h2>machinery</h2>
-                                    <p class="p2">Mdrerit sit amet tinunt ac verra selorta diam eu massisqu dia loreterdum vitaapibu ac scuitae ec eget tellus non et lacininec in vel ipsum auctorv felieum iaculis lacinia ictm elementum velit.usce euisoons.</p>
-                                    <div class="container"><a href="#" class="link-1">more</a></div>
+                                    <h2><?php the_title(); ?></h2>
+                                    <?php the_content(); ?>
+                                    <div class="container"><a href="<?php the_permalink(); ?>" class="link-1">more</a></div>
                                 </div>
-                                <div class="grid_4">
-                                    <h2>electricity</h2>
-                                    <p class="p2">Loreterdum vitaapius ac uite ec eget tellus non erat lacininec in vel ipsum auctorvorpt felieum iaculis lacinia ictum eleentum velit.usce euisod consequat antpsum dolor sit consectetuer adipiscing elitellentes.</p>
-                                    <div class="container"><a href="#" class="link-1">more</a></div>
-                                </div>
-                                <div class="grid_4">
-                                    <h2>planning</h2>
-                                    <p class="p2">Mdrerit sit amet tinunt aiverra selorta diam eu massisque dia loreterdum vitaapibus acuitae ec eget tellus non erat lac ininec in vel ipsum auctorvorpt felieum iaculis lacinia ictum elementum velit.</p>
-                                    <div class="container"><a href="#" class="link-1">more</a></div>
-                                </div>
-                                <div class="grid_4 omega">
-                                    <h2>production</h2>
-                                    <p class="p2">In vel ipsum auctorvorpt lieum iaculis lacinia ictum elementum velit.usce euisod consequat antpsum dolor sit consectetuer adipiscing elitellentesque sed dolor. Aliquam congue fer mentum nisl. </p>
-                                    <div class="container"><a href="#" class="link-1">more</a></div>
-                                </div>
+															<?php endwhile; ?>
+														<?php else: ?>
+														<?php endif; ?>
                             </div>
                         </div>
                         <div class="container">
                             <div class="grid_8 alpha">
                                 <h2 class="h2">professional approach</h2>
+																<?php if ( is_active_sidebar( 'true_side' ) ) : ?>
+
+
+																			<?php dynamic_sidebar( 'true_side' ); ?>
+
+
+																	<?php endif; ?>
                                 <div class="container">
                                     <img alt="" src="<?php echo get_template_directory_uri() ?>/images/1page_img1.jpg" class="img-left" />
                                     <h4>Lorem ipsum dolor sit amet</h4>
