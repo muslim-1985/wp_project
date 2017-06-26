@@ -38,26 +38,19 @@
                         </div>
                         <div class="container">
                             <div class="grid_8 alpha">
-                                <h2 class="h2">professional approach</h2>
-																<?php if ( is_active_sidebar( 'true_side' ) ) : ?>
-
-
-																			<?php dynamic_sidebar( 'true_side' ); ?>
-
-
-																	<?php endif; ?>
-                                <div class="container">
-                                    <img alt="" src="<?php echo get_template_directory_uri() ?>/images/1page_img1.jpg" class="img-left" />
-                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                    <p>Erat lacininec in vel ipsum aucvorpt felieaculis lacinia ictum ntumit.usce euiso onsequat ant psuolor sit conse ctetuer adipis cing elitell eorqm coue fertum niuccu diam. </p>
-                                    <br class="clear" />
-                                </div>
-                                <div class="container">
-                                    <img alt="" src="<?php echo get_template_directory_uri() ?>/images/1page_img2.jpg" class="img-left" />
-                                    <h4>Vestibulum libero nisl porta</h4>
-                                    <p>Lacinia ictum ntumit.usce euiso onsequat ant psuolor sit conse ctetuer adipis cing elitelrqm coue fertum niuccu diamd in lacus ut enim adipigqpede mi aliquet sit.</p>
-                                    <br class="clear" />
-                                </div>
+                                <h2 class="h2"><?php echo get_cat_name(7);?></h2>
+																<?php $new_query = new WP_Query('cat=7') ?>
+																<?php if($new_query->have_posts()): ?>
+																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
+	                                	  <div class="container">
+			                                    <?php the_post_thumbnail($size = 'post-thumbnail', $attr = array('class'=>'img-left')); ?>
+			                                    <h4><?php the_title(); ?></h4>
+			                                     <?php the_content(); ?>
+			                                    <br class="clear" />
+			                                </div>
+																<?php endwhile; ?>
+															<?php else: ?>
+															<?php endif; ?>
                             </div>
                             <div class="grid_8 omega">
                                 <h2  class="h2">what's new?</h2>
