@@ -23,7 +23,8 @@
                     <div class="container_16">
                         <div class="tail">
                             <div class="container">
-															<?php $new_query = new WP_Query('cat=6') ?>
+															<?php $args2 = array('post_type'=>'book','category_name' => 'planing') ?>
+															<?php $new_query = new WP_Query($args2) ?>
 															<?php if($new_query->have_posts()): ?>
 																<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
                                 <div class="grid_4 alpha">
@@ -39,7 +40,8 @@
                         <div class="container">
                             <div class="grid_8 alpha">
                                 <h2 class="h2"><?php echo get_cat_name(7);?></h2>
-																<?php $new_query = new WP_Query('cat=7') ?>
+																<?php $args = array('post_type'=>'book','category_name' => 'uproad') ?>
+																<?php $new_query = new WP_Query($args) ?>
 																<?php if($new_query->have_posts()): ?>
 																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
 	                                	  <div class="container">
@@ -53,29 +55,26 @@
 															<?php endif; ?>
                             </div>
                             <div class="grid_8 omega">
-                                <h2  class="h2">what's new?</h2>
-                                <div class="tail1">
-                                    <div class="container">
-                                        <div class="data">
-                                            14<span>december</span>
-                                        </div>
-                                        <div class="indent1"><h3>Sed ut perspiciatis unde omnis</h3>Erat la cininec in vel ipsum auctorvorpt felieum iaculisy euisod consequat antpsum dolor sit conse ctetuer.</div>
-                                    </div>
-                                </div>
-                                <div class="tail1">
-                                    <div class="container">
-                                        <div class="data">
-                                            23<span>december</span>
-                                        </div>
-                                        <div class="indent1"><h3>Loreterdum vitaapius acllus</h3>Antpsum dolor sit conse ctetuer adipiscing elitellenteue sedlorquam coue ferm entum niuris accu diam. </div>
-                                    </div>
-                                </div>
-                                <div class="container">
-                                    <div class="data">
-                                        05<span>december</span>
-                                    </div>
-                                    <div class="indent1"><h3>Sed ut perspiciatis unde omnis</h3>Erat la cininec in vel ipsum auctorvorpt felieum iaculisc euisod consequat antpsum dolor sit conse ctetuer.</div>
-                                </div>
+                                <h2  class="h2"><?php echo get_cat_name(8);?></h2>
+																<?php $args1 = array('post_type'=>'book','category_name' => 'wats_new') ?>
+																<?php $new_query = new WP_Query($args1) ?>
+																<?php if($new_query->have_posts()): ?>
+																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
+	                                	 			  <div class="tail1">
+						                                    <div class="container">
+						                                        <div class="data">
+						                                            <?php echo get_the_date('d'); ?>
+																												<span><?php echo get_the_date('F'); ?></span>
+						                                        </div>
+						                                        <div class="indent1">
+																											<h3><?php the_title(); ?></h3>
+																											<?php the_content(); ?>
+																										</div>
+						                                    </div>
+						                                </div>
+																<?php endwhile; ?>
+															<?php else: ?>
+															<?php endif; ?>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,8 @@
 <?php
+
+require_once(get_stylesheet_directory() . '/inc/theme_options.php');
+require_once(get_stylesheet_directory() . '/inc/custom_post_type.php');
+
 add_action('after_setup_theme', 'mytheme_setup');
 function mytheme_setup() {
   add_theme_support('title-tag');
