@@ -4,7 +4,8 @@
        	<a href="#" class="btnPrev"><img src="<?php echo get_template_directory_uri() ?>/images/button-1.png" alt=""></a><a href="#" class="btnNext"><img src="<?php echo get_template_directory_uri() ?>/images/button-2.png" alt=""></a>
     	<div id="carousel">
             <ul id="myRoundabout">
-							<?php $query = new WP_Query('cat=5'); ?>
+							<?php $args6 = array('post_type'=>'carousel','cat6' => 'image') ?>
+							<?php $query = new WP_Query($args6); ?>
 							<?php if ( $query->have_posts() ) : ?>
 							 <?php while ( $query->have_posts() ) : $query->the_post(); ?>
 								 	<li><?php the_post_thumbnail(); ?></li>
@@ -23,7 +24,7 @@
                     <div class="container_16">
                         <div class="tail">
                             <div class="container">
-															<?php $args2 = array('post_type'=>'book','category_name' => 'planing') ?>
+															<?php $args2 = array('post_type'=>'book','genre' => 'planing') ?>
 															<?php $new_query = new WP_Query($args2) ?>
 															<?php if($new_query->have_posts()): ?>
 																<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
@@ -39,8 +40,11 @@
                         </div>
                         <div class="container">
                             <div class="grid_8 alpha">
-                                <h2 class="h2"><?php echo get_cat_name(7);?></h2>
-																<?php $args = array('post_type'=>'book','category_name' => 'uproad') ?>
+															<?php $term_id = 13;
+																		$taxonomy = 'genre';
+																		$term = get_term( $term_id, $taxonomy ); ?>
+                                <h2 class="h2"> <?php echo $term->name; ?></h2>
+																<?php $args = array('post_type'=>'book','genre' => 'uproad') ?>
 																<?php $new_query = new WP_Query($args) ?>
 																<?php if($new_query->have_posts()): ?>
 																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
@@ -55,8 +59,11 @@
 															<?php endif; ?>
                             </div>
                             <div class="grid_8 omega">
-                                <h2  class="h2"><?php echo get_cat_name(8);?></h2>
-																<?php $args1 = array('post_type'=>'book','category_name' => 'wats_new') ?>
+                                <?php $term_id = 12;
+																			$taxonomy = 'genre';
+																			$term = get_term( $term_id, $taxonomy ); ?>
+	                                <h2 class="h2"> <?php echo $term->name; ?></h2>
+																<?php $args1 = array('post_type'=>'book','genre' => 'wats_news') ?>
 																<?php $new_query = new WP_Query($args1) ?>
 																<?php if($new_query->have_posts()): ?>
 																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
