@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: сервис
+*/
+?>
 <?php get_header(); ?>
 
 <div class="bg_cont1">

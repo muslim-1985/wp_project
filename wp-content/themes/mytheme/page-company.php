@@ -1,59 +1,87 @@
 
+<?php
+/*
+Template Name: компания
+*/
+?>
 <?php get_header(); ?>
-  <div class="bg_cont1">
+<div class="bg_cont1">
     <div class="bg_cont">
         <section id="content">
             <div class="main">
                 <div class="inside">
-                	<h2>meet work team</h2>
+                  <?php $term_id = 29;
+                        $taxonomy = 'cat';
+                        $term = get_term( $term_id, $taxonomy ); ?>
+                	<h2><?php echo $term->name; ?></h2>
                     <div class="container_16">
                         <div class="tail2">
                             <div class="container">
-                                <div class="grid_5 alpha">
-                                    <a href="#"><img alt="" src="images/2page_img1.jpg" class="img-indent" /></a><br>
-                                    <strong class="txt">Director</strong> , Sam Kromstain<br>
-                                    "Sed in lacus ut enim adipiscing aliquet aucvorpt felieaculis lacinia ictum <br>ntumit.usce euiso onsequat ant psuolor <br>sit conse ctetuer adipis cing elitell ..."
-                                </div>
-                                <div class="grid_5">
-                                    <a href="#"><img alt="" src="images/2page_img2.jpg" class="img-indent" /></a><br>
-                                    <strong class="txt">Industrial Engineer,</strong> John McCoist <br>
-                                    "Pellentesque sed dolorm aucvorpt felieaculis lacinia ictum ntumit.usce euiso onsequat ant psuolor sit conse ctetuer adipis cing elitell eorqm coue ..."
-                                </div>
-                                <div class="grid_5 omega">
-                                    <a href="#"><img alt="" src="images/2page_img3.jpg" class="img-indent" /></a><br>
-                                    <strong class="txt">Industrial Specialist,</strong> Alan Smith<br>
-                                    "Erat lacininec in vel ipsum aucvorpt felieaculis lacinia ictum ntumit.usce euiso onsequat ant psuolor sit conse ctetuer adipis cing elitell eorqm coue ..."
-                                </div>
+																<?php $args = array(
+                                                     'tax_query' => array(
+                                                                      		array(
+                                                                      			'taxonomy' => 'cat',
+                                                                            'field' => 'slug',
+                                                                      			'terms' => 'work'
+                                                                      		)
+                                                                      	)) ?>
+																<?php $new_query = new WP_Query($args) ?>
+																<?php if($new_query->have_posts()): ?>
+																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
+	                                	  <div class="grid_5 alpha">
+			                                    <a href="<?php the_permalink()?>">
+                                            <?php the_post_thumbnail($size = 'post-thumbnail', $attr = array('class'=>'img-indent')); ?>
+                                          </a>
+			                                    <strong class="txt"><?php the_title(); ?></strong><br>
+			                                     <?php the_content(); ?>
+			                                    <br class="clear" />
+			                                </div>
+																<?php endwhile; ?>
+															<?php else: ?>
+															<?php endif; ?>
                             </div>
                         </div>
                         <div class="container">
                             <div class="grid_8 alpha">
                                 <div class="suffix_1">
-                                    <h2 class="h2">organization strategy</h2>
-                                    <div class="container tail3">
-                                        <img alt="" src="images/2page_img4.png" class="img-left1"/>
-                                        <div class="indent2">
-                                            <h4>Extensive Safety Culture Development</h4>
-                                            <ul class="list">
-                                                <li><a href="#">Safety Consultant Training</a></li>
-                                                <li><a href="#">Leadership Development</a></li>
-                                                <li><a href="#">Employee Surveys</a></li>
-                                            </ul>
-                                            Lacinia ictum ntumit usce euiso onsequat antorsinse<br>ut enim adipigqpede mi alit gliquam dus tincnt justo.
+                                    <?php $term_id = 30;
+                                          $taxonomy = 'cat';
+                                          $term = get_term( $term_id, $taxonomy ); ?>
+                                  	<h2 class="h2"><?php echo $term->name; ?></h2>
+                                    <?php $args = array(
+                                      'tax_query'=>array(
+                                        array(
+                                          'taxonomy' => 'cat',
+                                          'field' => 'slug',
+                                          'terms' => 'strategy'
+                                        )
+                                      )
+                                    ) ?>
+                                    <?php $new_query = new WP_Query($args) ?>
+    																<?php if($new_query->have_posts()): ?>
+    																	<?php while ($new_query->have_posts()) :$new_query->the_post(); ?>
+                                        <div class="container tail3">
+                                          <?php the_post_thumbnail($size = 'post-thumbnail', $attr = array('class'=>'img-left1'));?>
+                                          <div class="indent2">
+                                            <h4><?php the_title(); ?></h4>
+                                            <?php
+                                            $cur_terms = get_the_terms( $post->ID, 'writer' );
+                                              foreach( $cur_terms as $cur_term ){
+                                              	echo '<ul class="list">
+                                                        <li>
+                                                          <a href="'. get_term_link( (int)$cur_term->term_id, $cur_term->taxonomy ) .'">'. $cur_term->name .'</a>
+                                                        </li>
+                                                      </ul>';
+                                              }
+                                             ?>
+                                      
+                                             <?php the_content(); ?>
+                                          </div>
                                         </div>
-                                    </div>
-                                    <div class="container">
-                                        <img alt="" src="images/2page_img5.png" class="img-left1"/>
-                                        <div class="indent2">
-                                            <h4>Comprehensive Safety and Technical t</h4>
-                                            <ul class="list">
-                                                <li><a href="#">Evaluation Programs</a></li>
-                                                <li><a href="#">Computer Based Training Modules</a></li>
-                                                <li><a href="#">Qualified 10hr - 30hr Instructors</a></li>
-                                            </ul>
-                                            Pictum ntumit usce euiso onsequat ant psuo<br>rsiconse  ut enim adipigqpede mi alit gliqu tincnt justo.
-                                        </div>
-                                    </div>
+                                      <?php endwhile; ?>
+      															<?php else: ?>
+      															<?php endif; ?>
+
                                 </div>
                             </div>
                             <div class="grid_8 omega">

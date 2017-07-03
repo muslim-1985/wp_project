@@ -394,6 +394,34 @@ function my_custom_init2(){
     'taxonomies'          => array('cat1'),
 		'supports'           => array('title','editor','author','thumbnail','excerpt')
 	) );
+
+			// определяем заголовки для 'writer'
+			$labels = array(
+				'name' => _x( 'Метки', 'taxonomy general name' ),
+				'singular_name' => _x( 'Метки', 'taxonomy singular name' ),
+				'search_items' =>  __( 'Поиск меток' ),
+				'popular_items' => __( 'Популярные метки' ),
+				'all_items' => __( 'Все метки' ),
+				'parent_item' => null,
+				'parent_item_colon' => null,
+				'edit_item' => __( 'Изменить метку' ),
+				'update_item' => __( 'Обновить метку' ),
+				'add_new_item' => __( 'Добавить новую метку' ),
+				'new_item_name' => __( 'Название новой метки' ),
+				'separate_items_with_commas' => __( 'Separate writers with commas' ),
+				'add_or_remove_items' => __( 'Добавление или удаление метки' ),
+				'choose_from_most_used' => __( 'Выберите наиболее используемые метки' ),
+				'menu_name' => __( 'Метки' ),
+			);
+
+			// Добавляем НЕ древовидную таксономию 'writer' (как метки)
+			register_taxonomy('writer1', 'services',array(
+				'hierarchical' => false,
+				'labels' => $labels,
+				'show_ui' => true,
+				'query_var' => true,
+				'rewrite' => array( 'slug' => 'writer1' ),
+			));
 }
 
 
