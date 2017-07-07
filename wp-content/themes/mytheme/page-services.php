@@ -15,13 +15,17 @@ Template Name: сервис
                             <div class="container">
                                 <div class="grid_5 alpha">
                                     <ul class="list1">
-                                        <li><a href="#">Renewable Energy</a></li>
-                                        <li><a href="#">Mining/Minerals</a></li>
-                                        <li><a href="#">Maintenance Services</a></li>
-                                        <li><a href="#">Water and Wastewater</a></li>
-                                        <li><a href="#">Pulp and Paper</a></li>
-                                        <li><a href="#">General Contracting</a></li>
-                                        <li><a href="#">Structural Steel Erection</a></li>
+                                            <?php
+                                              $args = array(
+                                                	'taxonomy' => 'cat1',
+                                                	'hide_empty' => false,
+                                                );
+                                                $terms = get_terms( $args );
+                                                 foreach( $terms as $term ){
+                                              		echo '<li><a href="'.get_term_link($term->slug, 'cat1').'">'. $term->name .'</a></li>';
+
+                                              	}
+                                             ?>
                                     </ul>
                                 </div>
                                 <div class="grid_11 omega">

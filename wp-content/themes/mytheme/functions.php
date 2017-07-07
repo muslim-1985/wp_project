@@ -29,18 +29,6 @@ function true_register_wp_sidebars() {
 			'after_title' => '</h3>'
 		)
 	);
-
-	register_sidebar(
-		array(
-			'id' => 'true_foot',
-			'name' => 'Правая колонка',
-			'description' => 'Перетащите сюда виджеты, чтобы добавить их в правую колонку.',
-			'before_widget' => '<div id="%1$s" class="foot widget %2$s">',
-			'after_widget' => '</div>',
-			'before_title' => '<h3 class="widget-title">',
-			'after_title' => '</h3>'
-		)
-	);
 }
 add_action( 'widgets_init', 'true_register_wp_sidebars' );
 
